@@ -1,0 +1,27 @@
+﻿@model _23dh113832.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Thong Tin Chi Tiet</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*Html.DisplayNameFor(model => model.CategoryName)*@
+            Ten danh muc
+        </dt>
+        @*Gia tri cua truong CatergoryName*@
+        <dd>
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Cap Nhat ", "Edit", new { id = Model.CategoryID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Quay lai danh sach", "Index",null, new { @class = "btn btn-primary" })
+</p>
