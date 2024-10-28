@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using _23dh113832.Models;
+using _23dh113832.Models.ViewModel;
 
 namespace _23dh113832.Areas.Admin.Controllers
 {
@@ -15,10 +16,18 @@ namespace _23dh113832.Areas.Admin.Controllers
         private MyStoreEntities db = new MyStoreEntities();
 
         // GET: Admin/Products
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm)
         {
-            var products = db.Products.Include(p => p.Category);
-            return View(products.ToList());
+            var model = new ProductSearchVM();
+            var products = db.Products.AsQueryable();
+
+            ìf(!string.IsNullOrEmpty(searchTerm))
+                {
+                products = products.Where(p =>)
+                    p.ProductName.Contains(searchTerm) ||
+                    p.ProductsDescription.Contains(searchTerm) ||
+                    p.Category.CategoryName.Contains(searchTerm));
+                }
         }
 
         // GET: Admin/Products/Details/5
